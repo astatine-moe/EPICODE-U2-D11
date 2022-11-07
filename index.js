@@ -29,9 +29,18 @@ $(async function () {
 
         $container.html("");
 
-        pinkFloyd = pinkFloyd.slice(0, maxPerArtist);
-        daftPunk = daftPunk.slice(0, maxPerArtist);
-        metallica = metallica.slice(0, maxPerArtist);
+        pinkFloyd = pinkFloyd.slice(0, maxPerArtist).map((item) => {
+            item.main = "pink-floyd";
+            return item;
+        });
+        daftPunk = daftPunk.slice(0, maxPerArtist).map((item) => {
+            item.main = "daft-punk";
+            return item;
+        });
+        metallica = metallica.slice(0, maxPerArtist).map((item) => {
+            item.main = "metallica";
+            return item;
+        });
 
         let allData = [...pinkFloyd, ...daftPunk, ...metallica];
 
@@ -53,6 +62,7 @@ $(async function () {
 
         for (const item of allData) {
             const {
+                main,
                 album: { cover, title: albumTitle, cover_big },
                 artist: { name, picture },
                 duration,
@@ -64,12 +74,15 @@ $(async function () {
             albums.add(albumTitle);
 
             const $col = $("<div>");
-            $col.addClass("col-md-3");
+            $col.addClass("col-md-4");
+            $col.attr("data-artist", main);
             const $card = $("<div>");
 
             const $badge = $("<span>");
-            $badge.addClass("badge badge-danger");
+            $badge.addClass("badge badge-dark");
             $badge.text(fmtMSS(duration));
+
+            $card.append($badge);
 
             $card.addClass("card bg-dark text-white");
             const $img = $("<img>");
@@ -145,4 +158,11 @@ $(async function () {
         console.error(e);
         alert("Failed loading results");
     }
+});
+
+$("[data-action='filter']").on("click", function () {
+    const artist = $(this).data("name");
+
+    $(".col-md-4").hide();
+    $(`[data-artist="${artist}"]`).show();
 });
