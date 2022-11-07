@@ -15,6 +15,8 @@ body {
 audio {
     display: block;
     margin-bottom: 1em;
+
+    width: 100%;
 }
 .modal-header h5 {
     color: black !important;
@@ -26,4 +28,16 @@ audio {
 
 .modal-body {
     color: black;
+}
+.card {
+    position: relative;
+}
+
+.card .badge {
+    position: absolute;
+
+    top: 1em;
+    left: 1.25em;
+
+    box-shadow: 5px 10px 8px #0000005a;
 }

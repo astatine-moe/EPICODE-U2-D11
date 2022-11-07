@@ -64,8 +64,12 @@ $(async function () {
             albums.add(albumTitle);
 
             const $col = $("<div>");
-            $col.addClass("col-md-4");
+            $col.addClass("col-md-3");
             const $card = $("<div>");
+
+            const $badge = $("<span>");
+            $badge.addClass("badge badge-danger");
+            $badge.text(fmtMSS(duration));
 
             $card.addClass("card bg-dark text-white");
             const $img = $("<img>");
