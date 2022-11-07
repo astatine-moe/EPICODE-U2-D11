@@ -1,0 +1,29 @@
+html {
+    scroll-behavior: smooth;
+}
+:root {
+    --body-bg: #fff;
+    --body-color: #000;
+}
+html,
+body {
+    background: rgb(30, 30, 30);
+    color: white;
+    overflow-x: hidden;
+}
+
+audio {
+    display: block;
+    margin-bottom: 1em;
+}
+.modal-header h5 {
+    color: black !important;
+}
+
+.modal label {
+    color: black;
+}
+
+.modal-body {
+    color: black;
+}
