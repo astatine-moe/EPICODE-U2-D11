@@ -10,7 +10,7 @@ const search = (query) => {
                 const data = json.data;
                 resolve(data);
             })
-            .catch((err) => reject);
+            .catch(reject);
     });
 };
 
@@ -138,6 +138,7 @@ $(async function () {
 
         $("#unique").text(albums.size);
     } catch (e) {
+        console.error(e);
         alert("Failed loading results");
     }
 });
